@@ -95,7 +95,7 @@ return {
       root_markers = { '.git' },
       settings = {
         xml = {
-          format = { enabled = false }, -- Prettier owns formatting
+          format = { enabled = true },
           validation = { enabled = true, schema = true },
         },
       },
