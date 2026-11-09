@@ -2,7 +2,7 @@
 
 Personal Neovim config. Part of the [forge](https://github.com/clintonbampoe/forge) ecosystem.
 
-![screenshot](docs/images/nvim-screenshot.png)
+![screenshot](docs/images/screenshot.png)
 
 Built on [lazy.nvim](https://github.com/folke/lazy.nvim): every plugin area is one file under `lua/plugins/`, and a language gets its own file when it needs something beyond an LSP server and a formatter.
 
@@ -65,14 +65,7 @@ You need:
 sudo apt install git gcc make ripgrep curl unzip nodejs npm xclip
 ```
 
-**With forge** — add this line to `configs.conf` in your forge repo, then run forge:
-
-```
-nvim|https://github.com/clintonbampoe/forge-nvim.git|forge-nvim
-```
-
 **Manually:**
-
 ```bash
 git clone https://github.com/clintonbampoe/forge-nvim.git ~/.config/nvim
 nvim --headless "+Lazy! sync" +qa   # install all plugins
@@ -80,9 +73,7 @@ nvim                                # Mason installs the tools on first launch
 ```
 
 ## Adding a language
-
 Four shared files hold most of it; a fifth file is optional.
-
 1. **LSP server** — add a `vim.lsp.config(...)` block plus `vim.lsp.enable(...)` in `lua/plugins/lsp.lua`
 2. **Tools** — add the server and formatter names to `ensure_installed` in `lua/plugins/mason.lua`
 3. **Formatter** — add `filetype = { 'formatter' }` to `formatters_by_ft` in `lua/plugins/conform.lua`
