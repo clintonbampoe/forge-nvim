@@ -19,6 +19,11 @@ return {
     local luasnip = require('luasnip')
 
     cmp.setup({
+      performance = {
+        debounce = 60,
+        throttle = 30,
+        fetching_timeout = 200,
+      },
       completion = {
         autocomplete = { cmp.TriggerEvent.TextChanged },
         completeopt = 'menu,menuone',
@@ -37,10 +42,10 @@ return {
         ['<Esc>'] = cmp.mapping.abort(),
       }),
       sources = cmp.config.sources({
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+        { name = 'nvim_lsp', max_item_count = 5 },
+        { name = 'luasnip', max_item_count = 3 },
       }, {
-        { name = 'buffer' },
+        { name = 'buffer', max_item_count = 3 },
         { name = 'path' },
       }),
     })

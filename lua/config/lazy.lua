@@ -32,6 +32,7 @@ require('lazy').setup({
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { 'catppuccin' } },
   install = { colorscheme = { 'rose-pine' } },
+  install = { colorscheme = { 'tokyo-night' } },
 
   -- automatically check for plugin updates
   checker = { enabled = true },
@@ -50,5 +51,13 @@ require('catppuccin').setup({
     miscs = {},
   },
 })
+
+require('tokyonight').setup({
+  styles = {
+    italic = false,
+  },
+})
+
+require('kanagawa').setup()
 
 vim.cmd('colorscheme catppuccin')

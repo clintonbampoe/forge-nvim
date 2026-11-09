@@ -16,6 +16,11 @@ return {
 
         -- C#
         'netcoredbg',
+        'roslyn-language-server',
+        'csharpier',
+
+        -- Dockerfile
+        'dockerfmt',
 
         -- YAML
         'yaml-language-server',
@@ -38,8 +43,14 @@ return {
         -- Lua
         'stylua',
 
+        -- Nginx,
+        'nginx-language-server',
+
         -- Typescript
         'vtsls',
+
+        -- Other
+        'prettier',
       },
     },
   },

@@ -69,4 +69,35 @@ return {
       })
     end,
   },
+
+  -- Code Folding
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = { 'kevinhwang91/promise-async' },
+    event = 'BufReadPost',
+    init = function()
+      vim.o.foldcolumn = '0'
+      vim.o.foldlevel = 99
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+      vim.o.fillchars = 'eob: ,fold: ,foldopen:,foldclose:,foldsep: ,foldinner: '
+
+      -- Statuscolumn: fold indicator only on current line
+      vim.o.statuscolumn = table.concat({
+        '%s', -- signs
+        '%#FoldColumn#',
+        '%{v:lnum==line(".")?(foldlevel(v:lnum)>foldlevel(v:lnum-1)?"":foldclosed(v:lnum)!=-1?"":""):""}',
+        ' %l ', -- line number
+      }, '')
+    end,
+    config = function()
+      require('ufo').setup({
+        provider_selector = function()
+          return { 'treesitter', 'indent' }
+        end,
+      })
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+    end,
+  },
 }

@@ -38,45 +38,18 @@ return {
             dotnet_enable_tests_code_lens = true,
           },
           ['csharp|background_analysis'] = {
-            dotnet_analyzer_diagnostics_scope = 'fullSolution',
-            dotnet_compiler_diagnostics_scope = 'fullSolution',
+            dotnet_analyzer_diagnostics_scope = 'openFiles',
+            dotnet_compiler_diagnostics_scope = 'openFiles',
           },
           ['csharp|completion'] = {
             dotnet_show_completion_items_from_unimported_namespaces = true,
-            dotnet_show_name_completion_suggestions = true,
+            dotnet_show_name_completion_suggestions = false,
           },
           ['csharp|symbol_search'] = {
             dotnet_search_reference_assemblies = true,
           },
         },
       })
-    end,
-  },
-
-  -- DAP adapter (netcoredbg)
-  {
-    'mfussenegger/nvim-dap',
-    optional = true,
-    ft = { 'cs' },
-    config = function()
-      local dap = require('dap')
-
-      dap.adapters.coreclr = {
-        type = 'executable',
-        command = vim.fn.stdpath('data') .. '/mason/bin/netcoredbg',
-        args = { '--interpreter=vscode' },
-      }
-
-      dap.configurations.cs = {
-        {
-          type = 'coreclr',
-          name = 'launch - netcoredbg',
-          request = 'launch',
-          program = function()
-            return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-          end,
-        },
-      }
     end,
   },
 }

@@ -88,6 +88,14 @@ return {
     })
     vim.lsp.enable('gopls')
 
+    -- Nginx
+    vim.lsp.config('nginx_language_server', {
+      cmd = { 'nginx-language-server' },
+      filetypes = { 'nginx' },
+      root_markers = { 'nginx.conf', '.git' },
+    })
+    vim.lsp.enable('nginx_language_server')
+
     -- XML
     vim.lsp.config('lemminx', {
       cmd = { 'lemminx' },
